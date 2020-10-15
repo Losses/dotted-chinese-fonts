@@ -23,6 +23,10 @@ const argv = yargs
                 'the PCF file.')
       .default('p', 13)
 
+      .alias('P', 'pixel_padding')
+      .describe('P', 'The padding of each pixel, relative to pixel size.')
+      .default('P', 9)
+
       .alias('s', 'dot_shape')
       .choices('s', ['square', 'circle', 'diamond'])
       .describe('s', 'The shape of dots.')
@@ -80,7 +84,7 @@ const PIXEL_HEIGHT = argv.glyph_size_in_pixel;
 const DEFAULT_ASCENT_IN_PIXELS = PIXEL_HEIGHT - 2;
 const UNITS_PER_EM = 1000;
 const PIXEL_SIZE = UNITS_PER_EM / PIXEL_HEIGHT;
-const PIXEL_PADDING = PIXEL_SIZE / 9;
+const PIXEL_PADDING = PIXEL_SIZE / argv.pixel_padding;
 const BYTES_PER_LINE = 4;
 const DESCENDER_HEIGHT = PIXEL_SIZE * 3;
 
